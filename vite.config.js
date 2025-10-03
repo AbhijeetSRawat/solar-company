@@ -4,9 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+    base : '/solar-company/',
   plugins: [
     react(),
     tailwindcss()
   ],
-  base : '/solar-company/'
+
 })
