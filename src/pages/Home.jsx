@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sun, Zap, DollarSign, Leaf, Shield, TrendingUp, Users, Award, BatteryMedium, Factory, Home as HomeIcon, Building2, CheckCircle, ArrowRight, Phone, Mail, MapPin, Play, Star, ChevronDown } from 'lucide-react';
 
@@ -176,14 +177,16 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
           >
-            <motion.button
-              className="group bg-gradient-to-r from-yellow-400 via-green-500 to-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-2"
-              whileHover={{ scale: 1.1, boxShadow: "0 20px 60px rgba(34,197,94,0.6)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get Free Quote
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </motion.button>
+            <Link to="/about">
+              <motion.button
+                className="group bg-gradient-to-r from-yellow-400 via-green-500 to-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-2"
+                whileHover={{ scale: 1.1, boxShadow: "0 20px 60px rgba(34,197,94,0.6)" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Learn More
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </motion.button>
+            </Link>
             <motion.button
               className="group bg-white/10 backdrop-blur-lg text-white font-bold py-4 px-8 rounded-full border-2 border-white/30 shadow-xl flex items-center gap-2"
               whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)", borderColor: "#ffffff" }}
@@ -347,14 +350,16 @@ const Home = () => {
                     </motion.li>
                   ))}
                 </ul>
-                <motion.button
-                  className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-8 rounded-full flex items-center gap-2 shadow-lg"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(34,197,94,0.4)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Learn More
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+                <Link to="/about">
+                  <motion.button
+                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-8 rounded-full flex items-center gap-2 shadow-lg"
+                    whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(34,197,94,0.4)" }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Learn More
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -764,14 +769,16 @@ const Home = () => {
                     <ArrowRight className="w-5 h-5" />
                   </motion.div>
                 </motion.button>
-                <motion.button
-                  className="bg-white text-green-700 font-bold py-4 px-10 rounded-full border-2 border-green-300 shadow-xl text-lg flex items-center gap-2"
-                  whileHover={{ scale: 1.08, borderColor: "#22c55e", backgroundColor: "#f0fdf4" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Zap className="w-5 h-5" />
-                  Get Free Quote
-                </motion.button>
+                <Link to="/about">
+                  <motion.button
+                    className="bg-white text-green-700 font-bold py-4 px-10 rounded-full border-2 border-green-300 shadow-xl text-lg flex items-center gap-2"
+                    whileHover={{ scale: 1.08, borderColor: "#22c55e", backgroundColor: "#f0fdf4" }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Zap className="w-5 h-5" />
+                    Learn More
+                  </motion.button>
+                </Link>
               </div>
 
               <motion.p

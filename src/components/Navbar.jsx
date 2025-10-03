@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../public/vite.jpg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState('/');
+  const location = useLocation();
+  const activeLink = location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +44,6 @@ const Navbar = () => {
             <Link 
               to="/" 
               className="text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wide text-white relative"
-              onClick={() => setActiveLink('/')}
             >
               <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-white via-green-50 to-white group-hover:from-green-100 group-hover:via-white group-hover:to-green-100 transition-all duration-300">
                 MAVEN Green Energy
@@ -59,7 +59,6 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className="relative px-4 py-2 font-semibold text-white group overflow-hidden"
-                onClick={() => setActiveLink(link.path)}
               >
                 <span className="relative z-10 group-hover:text-green-100 transition-colors duration-300">
                   {link.label}
@@ -138,7 +137,6 @@ const Navbar = () => {
                 }}
                 onClick={() => {
                   setIsOpen(false);
-                  setActiveLink(link.path);
                 }}
               >
                 <span className="relative z-10 group-hover:text-green-100 transition-colors duration-300">
