@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sun, Zap, DollarSign, Leaf, Shield, TrendingUp, Users, Award, BatteryMedium, Factory, Home as HomeIcon, Building2, CheckCircle, ArrowRight, Phone, Mail, MapPin, Play, Star, ChevronDown } from 'lucide-react';
+import { Sun, Zap, DollarSign, Leaf, Shield, Users, BatteryMedium, Building2, ArrowRight, Phone, Mail, Star, ChevronDown, Wrench, Calculator, Sparkles, Play } from 'lucide-react';
 
 const Home = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [activeTab, setActiveTab] = useState('residential');
+  const [activeFaqTab, setActiveFaqTab] = useState('maintenance');
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
@@ -18,76 +17,125 @@ const Home = () => {
   }, []);
 
   const testimonials = [
-    { name: "John Martinez", location: "California", text: "Switching to solar was the best decision! My energy bills dropped by 80%.", rating: 5, type: "Residential" },
-    { name: "Sarah Chen", location: "Texas", text: "Professional installation and amazing customer service. Highly recommended!", rating: 5, type: "Commercial" },
-    { name: "Michael Brown", location: "Florida", text: "The ROI has been incredible. Paid for itself in just 4 years!", rating: 5, type: "Industrial" },
-    { name: "Emily Rodriguez", location: "Arizona", text: "Their battery storage solution keeps our business running 24/7!", rating: 5, type: "BESS" }
+    { 
+      name: "Braj Bhushan", 
+      location: "Uttar Pradesh", 
+      text: "I was worried about the generation. But I am so excited now. My bills have gone down from Rs 4300 to Rs 500-700 a month. The team also comes home and regularly cleans my panels.", 
+      type: "Home solar system" 
+    },
+    { 
+      name: "Gandharv Chauhan", 
+      location: "Rajasthan", 
+      text: "Being an engineer myself, I am extremely satisfied with the team of MAVEN. They have done an amazing job in the construction of my solar. The team is very efficient and knowledgeable.", 
+      type: "Home solar system" 
+    },
+    { 
+      name: "Anish Sengupta", 
+      location: "Johnson & Johnson", 
+      text: "I am happy to acknowledge that MAVEN has met the strictest Quality & Safety norms dictated by the Global Standards of Johnson & Johnson.", 
+      type: "Commercial" 
+    }
   ];
 
-  const services = {
-    residential: {
-      icon: HomeIcon,
-      title: "Residential Solar",
-      features: ["Rooftop Solar Panels", "Net Metering", "25+ Year Warranty", "Smart Monitoring"],
-      desc: "Transform your home into a clean energy powerhouse",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop"
-    },
-    commercial: {
-      icon: Building2,
-      title: "Commercial Solar",
-      features: ["Large-Scale Systems", "Tax Incentives", "Predictable Energy Costs", "Corporate Sustainability"],
-      desc: "Power your business with sustainable energy solutions",
-      image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&auto=format&fit=crop"
-    },
-    industrial: {
-      icon: Factory,
-      title: "Industrial Solar",
-      features: ["High-Capacity Systems", "Maximum Efficiency", "24/7 Monitoring", "Reduced Operating Costs"],
-      desc: "Industrial-grade solar for maximum production",
-      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&auto=format&fit=crop"
-    },
-    bess: {
-      icon: BatteryMedium,
-      title: "Battery Storage (BESS)",
-      features: ["Energy Independence", "Peak Shaving", "Backup Power", "Grid Flexibility"],
-      desc: "Store energy and achieve complete power autonomy",
-      image: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=800&auto=format&fit=crop"
-    }
+  const faqTabs = {
+    maintenance: [
+      {
+        q: "What is the life of a rooftop solar system?",
+        a: "Our premium solar panels come with a 25+ year warranty and typically last 30-35 years with minimal maintenance. The panels are designed to withstand harsh weather conditions and continue generating electricity efficiently for decades."
+      },
+      {
+        q: "Do Solar Rooftop projects have a high maintenance cost?",
+        a: "No, solar rooftop systems require minimal maintenance. Basic cleaning 1-2 times a month and annual professional inspections are sufficient. We provide a free 5-year annual maintenance contract with all installations."
+      },
+      {
+        q: "Can Solar projects damage my roof?",
+        a: "Absolutely not! Our installation uses chemically anchored mounting structures that are completely safe. We conduct thorough roof assessments before installation and provide roof replacement solutions if needed for compromised structures."
+      },
+      {
+        q: "Do I need to clean my Solar plant?",
+        a: "Yes, it's good practice to clean panels 1-2 times monthly using a clean wet cloth or soft brush. Our team provides regular cleaning services as part of our maintenance packages to ensure optimal performance."
+      },
+      {
+        q: "My roof is not made of concrete; can I still install a Solar Project?",
+        a: "Yes! Solar power plants can be installed on almost any roof type regardless of shape or material. For brittle materials like asbestos, we provide specialized mounting solutions and roof replacement options."
+      }
+    ],
+    general: [
+      {
+        q: "Why should I go solar?",
+        a: "Solar allows you to save 70-90% on monthly electricity bills while contributing to environmental sustainability. It's a lucrative investment with 2-4 year breakeven period and 25+ years of savings."
+      },
+      {
+        q: "Is Solar energy safe?",
+        a: "Absolutely! Solar electricity is identical to grid electricity but cleaner. It's among the safest sources with zero hazardous emissions or toxic gases during production."
+      },
+      {
+        q: "Who all can qualify for a solar system?",
+        a: "Anyone with empty roof space and rooftop access can install solar. Just fill our enquiry form and we'll handle everything from design to installation and maintenance."
+      },
+      {
+        q: "What are the different types of Solar systems available?",
+        a: "There are 3 main types: On-Grid (connected to power grid), Off-Grid (with battery storage), and Hybrid (combination of both). We help you choose based on your needs."
+      },
+      {
+        q: "Do solar panels produce electricity during cloudy or rainy weather?",
+        a: "Yes! Panels generate electricity even in cloudy/rainy conditions, albeit with reduced efficiency. This is factored into our unit generation estimates for every project."
+      }
+    ],
+    economics: [
+      {
+        q: "How much money can I save?",
+        a: "Most customers save 70-90% on electricity bills. Exact savings depend on your consumption, system size, and local electricity rates. Typical breakeven is 2-4 years with 25+ years of continued savings."
+      },
+      {
+        q: "What is the cost of a Solar plant?",
+        a: "Costs vary based on size, configuration, and structural requirements. We provide multiple customized options with flexible financing and 0% EMI plans to suit your budget."
+      },
+      {
+        q: "What is the ROI period for a solar plant?",
+        a: "Rooftop solar projects achieve breakeven in 2-4 years for residential, commercial, and industrial projects, while you enjoy savings for the entire 25-year project life."
+      },
+      {
+        q: "What subsidies are available?",
+        a: "Government subsidies: ₹30,000 for 1kW, ₹60,000 for 2kW, ₹78,000 for 3kW+ (residential). Group housing gets ₹18,000/kW. We handle the entire subsidy process for you."
+      },
+      {
+        q: "What are the financing options?",
+        a: "We provide lucrative EMI options and facilitate collateral-free loans through banking partners. Flexible 0% EMI plans are available to make solar affordable for everyone."
+      }
+    ]
   };
 
   return (
     <div className="w-full min-h-screen bg-white font-sans overflow-x-hidden">
       
-      {/* Hero Section with Parallax Effect */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&auto=format&fit=crop')",
+              backgroundImage: "url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1920&auto=format&fit=crop')",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-green-900/70 via-green-800/60 to-green-900/80" />
         </div>
 
-        {/* Animated Particles */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {[...Array(20)].map((_, i) => (
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-yellow-400/60 rounded-full"
+              className="absolute w-1.5 h-1.5 bg-yellow-300/30 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 1, 0.2],
-                scale: [1, 1.5, 1],
+                y: [0, -25, 0],
+                opacity: [0.1, 0.5, 0.1],
               }}
               transition={{
-                duration: 3 + Math.random() * 2,
+                duration: 4 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 2,
               }}
@@ -95,507 +143,422 @@ const Home = () => {
           ))}
         </div>
 
-        {/* Hero Content */}
         <motion.div 
-          className="relative z-10 text-center px-4 max-w-6xl"
+          className="relative z-10 text-center px-4 max-w-5xl"
           style={{ opacity, scale }}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5, rotateY: 180 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1, type: "spring" }}
-            className="mb-8"
-          >
-            <div className="relative inline-block">
-              <motion.div
-                className="absolute inset-0 bg-yellow-400/40 rounded-full blur-3xl"
-                animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.7, 0.3] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
-              <motion.div
-                className="relative w-32 h-32 md:w-48 md:h-48 mx-auto rounded-full bg-gradient-to-br from-yellow-400 via-green-500 to-blue-500 p-1 shadow-2xl"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              >
-                <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                  <Sun className="w-16 h-16 md:w-24 md:h-24 text-yellow-500" />
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white leading-tight drop-shadow-lg"
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-white leading-tight drop-shadow-2xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 1 }}
           >
-            MAVEN Green Energy
+            Still paying for electricity?
           </motion.h1>
 
           <motion.p
-            className="text-2xl md:text-4xl text-green-300 font-bold mb-2"
+            className="text-2xl md:text-4xl text-green-200 font-bold mb-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.3 }}
           >
-            Clean Power. Bright Future.
-          </motion.p>
-
-          <motion.p
-            className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            Harness the sun's unlimited power for your home, business, or industry
+            Switch to solar. Let the sun pay your bills.
           </motion.p>
 
           <motion.div
-            className="flex gap-3 justify-center mb-10 flex-wrap"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mb-10"
           >
-            {['Residential', 'Commercial', 'Industrial', 'BESS'].map((item, i) => (
-              <motion.span
-                key={i}
-                className="px-5 py-2 bg-white/10 backdrop-blur-md rounded-full text-white font-semibold border border-green-400/50 shadow-lg"
-                whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)", borderColor: "#22c55e" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + i * 0.1 }}
-              >
-                {item}
-              </motion.span>
-            ))}
+            <motion.button
+              className="bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 text-gray-900 font-bold py-5 px-12 rounded-full shadow-2xl text-xl inline-flex items-center gap-3"
+              whileHover={{ scale: 1.08, boxShadow: "0 25px 70px rgba(251,191,36,0.5)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Join India's Solar Revolution
+              <ArrowRight className="w-6 h-6" />
+            </motion.button>
           </motion.div>
 
           <motion.div
-            className="flex gap-4 justify-center flex-wrap"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
+            className="inline-block bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-2xl border border-white/30"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7 }}
           >
-            <Link to="/about">
-              <motion.button
-                className="group bg-gradient-to-r from-yellow-400 via-green-500 to-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-2"
-                whileHover={{ scale: 1.1, boxShadow: "0 20px 60px rgba(34,197,94,0.6)" }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Learn More
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-              </motion.button>
-            </Link>
-            <motion.button
-              className="group bg-white/10 backdrop-blur-lg text-white font-bold py-4 px-8 rounded-full border-2 border-white/30 shadow-xl flex items-center gap-2"
-              whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)", borderColor: "#ffffff" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Play className="w-5 h-5" />
-              Watch Demo
-            </motion.button>
+            <div className="flex items-center gap-4 flex-wrap justify-center">
+              <div className="flex items-center gap-2">
+                <svg className="w-8 h-8" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                <span className="text-gray-700 font-semibold">Google</span>
+              </div>
+              <div className="text-left border-l-2 border-gray-200 pl-4">
+                <p className="text-gray-800 font-bold text-sm">India's trusted solar company</p>
+                <div className="flex items-center gap-2 mt-1 flex-wrap">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <span className="text-gray-700 font-bold">4.8</span>
+                  <span className="text-gray-600 text-sm">6000+ reviews</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 15, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown className="w-8 h-8 text-green-400" />
+          <div className="flex flex-col items-center gap-2">
+            <ChevronDown className="w-8 h-8 text-green-200" />
+            <span className="text-green-200 text-sm font-medium">Scroll Down</span>
+          </div>
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-gradient-to-b from-green-600 to-emerald-700 py-20 px-6 relative overflow-hidden">
-        <motion.div
-          className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 via-green-400 to-blue-400"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-        />
-        
-        <div className="max-w-7xl mx-auto">
+      {/* Solar Solutions Section */}
+      <section className="py-24 px-6 bg-gradient-to-b from-blue-900 via-blue-800 to-indigo-900 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }} />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-16 text-white"
+            className="text-4xl md:text-6xl font-bold text-center mb-20 text-white"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Our Impact in Numbers
+            Our solar solutions
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Users, value: "10,000+", label: "Happy Customers", color: "from-green-400 to-green-600" },
-              { icon: BatteryMedium, value: "100+ MWh", label: "Battery Storage", color: "from-blue-400 to-blue-600" },
-              { icon: Sun, value: "50MW+", label: "Solar Installed", color: "from-yellow-400 to-orange-500" },
-              { icon: Leaf, value: "25k Tons", label: "CO₂ Reduced", color: "from-emerald-400 to-teal-600" }
+              {
+                title: "Homes",
+                image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop"
+              },
+              {
+                title: "Housing Society",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop"
+              },
+              {
+                title: "Commercial",
+                image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&auto=format&fit=crop"
+              }
+            ].map((service, i) => (
+              <motion.div
+                key={i}
+                className="group relative overflow-hidden rounded-3xl shadow-2xl cursor-pointer"
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, type: "spring" }}
+                whileHover={{ 
+                  scale: 1.05,
+                  zIndex: 10,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <div className="relative h-96">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                  <div className="absolute bottom-8 left-0 right-0 text-center">
+                    <h3 className="text-4xl font-bold text-white px-4">{service.title}</h3>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-6 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 relative overflow-hidden">
+        <motion.div
+          className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { icon: Users, value: "25,000+", label: "Happy Customers" },
+              { icon: Building2, value: "200+", label: "Housing Societies" },
+              { icon: BatteryMedium, value: "90 MW", label: "Solar Installed" },
+              { icon: Leaf, value: "90%", label: "Bill Reduction" }
             ].map((stat, i) => (
               <motion.div
                 key={i}
-                className="relative group"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
+                transition={{ delay: i * 0.1, type: "spring" }}
               >
                 <motion.div
-                  className="relative bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20 shadow-2xl text-center overflow-hidden"
-                  whileHover={{ y: -10, scale: 1.05, backgroundColor: "rgba(255,255,255,0.2)" }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="inline-block p-5 rounded-2xl bg-white/20 backdrop-blur-sm mb-4 shadow-xl"
+                  whileHover={{ rotate: 360, scale: 1.15 }}
+                  transition={{ duration: 0.6 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.div
-                    className={`inline-block p-4 rounded-full bg-gradient-to-br ${stat.color} mb-4 relative z-10`}
-                    whileHover={{ rotate: 360, scale: 1.2 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <h3 className="text-4xl font-bold text-white mb-2 relative z-10">{stat.value}</h3>
-                  <p className="text-green-100 font-medium relative z-10">{stat.label}</p>
+                  <stat.icon className="w-10 h-10 text-white" />
                 </motion.div>
+                <h3 className="text-5xl font-bold text-white mb-2">{stat.value}</h3>
+                <p className="text-green-100 font-semibold text-lg">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Tabs Section */}
-      <section className="py-20 px-6 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-700 to-blue-500 bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Our Solutions
-          </motion.h2>
-          <motion.p
-            className="text-center text-gray-600 mb-12 text-lg max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Comprehensive solar and energy storage solutions tailored to your specific needs
-          </motion.p>
-
-          {/* Service Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {Object.entries(services).map(([key, service]) => (
-              <motion.button
-                key={key}
-                onClick={() => setActiveTab(key)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all ${
-                  activeTab === key
-                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg'
-                    : 'bg-green-50 text-gray-700 border-2 border-green-200 hover:border-green-400'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+      {/* Testimonials Section */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Left Column */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-12"
               >
-                <service.icon className="w-5 h-5" />
-                {service.title}
-              </motion.button>
-            ))}
-          </div>
+                <h2 className="text-5xl md:text-6xl font-bold mb-4 text-gray-900">
+                  90% of customers recommend us!
+                </h2>
+                <p className="text-gray-600 text-lg">
+                  Don't just believe us - read the reviews for yourself.
+                </p>
+              </motion.div>
 
-          {/* Active Service Content */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-3xl shadow-2xl overflow-hidden border-2 border-green-200"
-          >
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* Image Side */}
-              <div className="relative h-80 md:h-auto overflow-hidden">
-                <img 
-                  src={services[activeTab].image} 
-                  alt={services[activeTab].title}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-transparent flex items-center justify-center">
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-white text-center p-8"
-                  >
-                    {React.createElement(services[activeTab].icon, { className: "w-24 h-24 mx-auto mb-4" })}
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Content Side */}
-              <div className="p-8 md:p-12">
-                <h3 className="text-3xl font-bold text-green-900 mb-4">{services[activeTab].title}</h3>
-                <p className="text-gray-700 text-lg mb-6">{services[activeTab].desc}</p>
-                <ul className="space-y-3 mb-8">
-                  {services[activeTab].features.map((feature, i) => (
-                    <motion.li
-                      key={i}
-                      className="flex items-center gap-3"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="md:sticky md:top-24"
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer">
+                  <img 
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop" 
+                    alt="Customer testimonial"
+                    className="w-full aspect-video object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/30 transition-colors">
+                    <motion.div
+                      className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl"
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <CheckCircle className="w-6 h-6 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700 font-medium">{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-                <Link to="/about">
-                  <motion.button
-                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-3 px-8 rounded-full flex items-center gap-2 shadow-lg"
-                    whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(34,197,94,0.4)" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Learn More
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.button>
-                </Link>
-              </div>
+                      <Play className="w-10 h-10 text-white ml-1.5" />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+
+            {/* Right Column */}
+            <div className="relative pt-16 md:pt-0">
+              <motion.div 
+                className="absolute -top-4 right-0 z-10"
+                whileHover={{ y: -3 }}
+              >
+                <button 
+                  onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                  className="p-3 bg-white border-2 border-gray-200 rounded-full hover:border-green-600 hover:bg-green-50 transition-all shadow-md"
+                >
+                  <ChevronDown className="w-5 h-5 text-gray-700 rotate-180" />
+                </button>
+              </motion.div>
+
+              <div className="space-y-6 mt-8">
+                <motion.div
+                  key={activeTestimonial}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-900 text-white p-8 md:p-10 rounded-2xl shadow-xl"
+                >
+                  <p className="text-lg md:text-xl leading-relaxed mb-6 italic font-light">
+                    "{testimonials[activeTestimonial].text}"
+                  </p>
+                  <div className="border-t border-white/20 pt-4">
+                    <h4 className="text-lg md:text-xl font-bold">
+                      {testimonials[activeTestimonial].name}, {testimonials[activeTestimonial].location}
+                    </h4>
+                    <p className="text-green-300 text-sm mt-1">{testimonials[activeTestimonial].type}</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800 p-8 md:p-10 rounded-2xl shadow-md opacity-70"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.7 }}
+                >
+                  <p className="text-base md:text-lg leading-relaxed mb-4 italic font-light line-clamp-3">
+                    "{testimonials[(activeTestimonial + 1) % testimonials.length].text}"
+                  </p>
+                  <div className="border-t border-gray-400/30 pt-3">
+                    <h4 className="text-base md:text-lg font-bold text-gray-700">
+                      {testimonials[(activeTestimonial + 1) % testimonials.length].name}...
+                    </h4>
+                  </div>
+                </motion.div>
+              </div>
+
+              <motion.div 
+                className="absolute -bottom-4 right-0 z-10"
+                whileHover={{ y: 3 }}
+              >
+                <button 
+                  onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
+                  className="p-3 bg-white border-2 border-gray-200 rounded-full hover:border-green-600 hover:bg-green-50 transition-all shadow-md"
+                >
+                  <ChevronDown className="w-5 h-5 text-gray-700" />
+                </button>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Benefits Grid Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-green-50 to-white">
+      {/* Trusted By Section - Infinite Slider */}
+      <section className="py-20 px-6 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-700 to-blue-500 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Why Choose MAVEN?
+            Trusted By
           </motion.h2>
-          <motion.p
-            className="text-center text-gray-600 mb-16 text-lg max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            We're committed to delivering exceptional value and sustainable energy solutions
-          </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: DollarSign,
-                title: "Massive Savings",
-                desc: "Cut your energy bills by up to 90% with premium solar technology and smart energy management.",
-                color: "from-green-400 to-emerald-600"
-              },
-              {
-                icon: Leaf,
-                title: "Eco-Friendly Impact",
-                desc: "Reduce your carbon footprint significantly and contribute to a cleaner, greener planet.",
-                color: "from-emerald-400 to-teal-600"
-              },
-              {
-                icon: Shield,
-                title: "Unmatched Reliability",
-                desc: "Industry-leading warranties up to 25+ years and 24/7 expert support for peace of mind.",
-                color: "from-blue-400 to-indigo-600"
-              },
-              {
-                icon: TrendingUp,
-                title: "Increase Property Value",
-                desc: "Boost your property's market value by up to 4% and attract eco-conscious buyers.",
-                color: "from-purple-400 to-pink-600"
-              },
-              {
-                icon: BatteryMedium,
-                title: "Advanced Storage",
-                desc: "State-of-the-art battery systems ensure energy independence and backup power.",
-                color: "from-orange-400 to-red-600"
-              },
-              {
-                icon: Award,
-                title: "Award-Winning Excellence",
-                desc: "Recognized industry leader with multiple awards for innovation and service quality.",
-                color: "from-yellow-400 to-orange-600"
-              }
-            ].map((benefit, i) => (
-              <motion.div
-                key={i}
-                className="group relative"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <motion.div
-                  className="relative bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-2xl border-2 border-green-200 shadow-xl h-full overflow-hidden"
-                  whileHover={{ y: -10, borderColor: "#22c55e", scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.div
-                    className={`inline-block p-4 rounded-full bg-gradient-to-br ${benefit.color} mb-4 relative z-10`}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <benefit.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <h3 className="text-2xl font-bold mb-3 text-green-900 relative z-10">{benefit.title}</h3>
-                  <p className="text-gray-700 leading-relaxed relative z-10">{benefit.desc}</p>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Timeline */}
-      <section className="py-20 px-6 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-700 to-blue-500 bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Your Journey to Clean Energy
-          </motion.h2>
-          <motion.p
-            className="text-center text-gray-600 mb-16 text-lg max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            A simple, streamlined process from consultation to enjoying renewable energy
-          </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { step: "01", title: "Free Consultation", desc: "We analyze your energy needs and design the perfect solar solution.", icon: Phone },
-              { step: "02", title: "Custom Design", desc: "Our engineers create a tailored system optimized for maximum efficiency.", icon: Zap },
-              { step: "03", title: "Professional Installation", desc: "Expert installation with minimal disruption to your daily routine.", icon: CheckCircle },
-              { step: "04", title: "Enjoy & Save", desc: "Start saving money immediately while contributing to a greener future.", icon: Sun }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="relative"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-              >
-                <motion.div
-                  className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl border-2 border-green-200 p-8 shadow-xl text-center h-full relative overflow-hidden group"
-                  whileHover={{ y: -10, borderColor: "#22c55e" }}
-                >
-                  <div className="absolute top-0 right-0 text-8xl font-bold text-green-500/10 -mr-4 -mt-4 group-hover:text-green-500/20 transition-colors">
-                    {item.step}
-                  </div>
-                  <motion.div
-                    className="relative inline-block p-4 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 mb-4"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <item.icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-green-900 mb-3 relative z-10">{item.title}</h3>
-                  <p className="text-gray-700 relative z-10">{item.desc}</p>
-                </motion.div>
-                {i < 3 && (
-                  <motion.div
-                    className="hidden lg:block absolute top-1/2 -right-4 z-20"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.2 + 0.3 }}
-                  >
-                    <ArrowRight className="w-8 h-8 text-green-500" />
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Carousel */}
-      <section className="py-20 px-6 bg-gradient-to-b from-green-50 to-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-700 to-blue-500 bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            What Our Clients Say
-          </motion.h2>
-          <motion.p
-            className="text-center text-gray-600 mb-16 text-lg"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Real stories from satisfied customers across all sectors
-          </motion.p>
+          
           <div className="relative">
-            <motion.div
-              key={activeTestimonial}
-              className="bg-white p-12 rounded-3xl border-2 border-green-200 shadow-2xl"
-              initial={{ opacity: 0, scale: 0.9, rotateY: 90 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex justify-center mb-6">
-                {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+            
+            <div className="overflow-hidden py-8">
+              <motion.div
+                className="flex gap-16 items-center"
+                animate={{
+                  x: [0, -1280],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 25,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {/* First set of logos */}
+                {[
+                  { 
+                    name: "Prince Pipes",
+                    logo: "https://play-lh.googleusercontent.com/xefGJ9qIzjQFOtU9u4gW-TEGQemvbHVaQ1VCNd6ct5LEHChAwkJM3v9gVxU4Cw2F91Q=w240-h480-rw"},
+                  { 
+                    name: "TVS",
+                    logo: "https://upload.wikimedia.org/wikipedia/ta/7/79/TVS_Motor_Company_Logo.png"
+                  },
+                  { 
+                    name: "UltraTech Cement",
+                    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Ultratech_Cement_Logo.svg/1200px-Ultratech_Cement_Logo.svg.png"
+                  },
+                  { 
+                    name: "Johnson & Johnson",
+                    logo: "https://pharmaphorum.com/wp-content/uploads/2016/06/JJ-logo.jpg"
+                  },
+                  { 
+                    name: "I'Decor",
+                    logo: "https://img.yfisher.com/m6153/1730345878jrdu.png"
+                  }
+                ].map((company, i) => (
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
+                    key={`first-${i}`}
+                    className="flex-shrink-0 w-56 h-24 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 px-4"
+                    whileHover={{ scale: 1.15 }}
                   >
-                    <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
+                    <img 
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-h-16 max-w-full w-auto object-contain"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = `<div class="text-2xl font-bold text-gray-700">${company.name}</div>`;
+                      }}
+                    />
                   </motion.div>
                 ))}
-              </div>
-              <p className="text-2xl md:text-3xl text-gray-700 mb-8 italic text-center leading-relaxed">
-                "{testimonials[activeTestimonial].text}"
-              </p>
-              <div className="text-center">
-                <h4 className="text-2xl font-bold text-green-900">{testimonials[activeTestimonial].name}</h4>
-                <p className="text-green-600 font-medium mb-2">{testimonials[activeTestimonial].location}</p>
-                <span className="inline-block px-4 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold border-2 border-green-300">
-                  {testimonials[activeTestimonial].type}
-                </span>
-              </div>
-            </motion.div>
 
-            {/* Navigation Dots */}
-            <div className="flex justify-center mt-10 gap-3">
-              {testimonials.map((_, i) => (
-                <motion.button
-                  key={i}
-                  onClick={() => setActiveTestimonial(i)}
-                  className={`h-3 rounded-full transition-all ${
-                    i === activeTestimonial ? 'bg-green-600 w-12' : 'bg-green-300 w-3'
-                  }`}
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.9 }}
-                />
-              ))}
+                 {/* First set of logos */}
+                {[
+                  { 
+                    name: "Prince Pipes",
+                    logo: "https://play-lh.googleusercontent.com/xefGJ9qIzjQFOtU9u4gW-TEGQemvbHVaQ1VCNd6ct5LEHChAwkJM3v9gVxU4Cw2F91Q=w240-h480-rw"},
+                  { 
+                    name: "TVS",
+                    logo: "https://upload.wikimedia.org/wikipedia/ta/7/79/TVS_Motor_Company_Logo.png"
+                  },
+                  { 
+                    name: "UltraTech Cement",
+                    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Ultratech_Cement_Logo.svg/1200px-Ultratech_Cement_Logo.svg.png"
+                  },
+                  { 
+                    name: "Johnson & Johnson",
+                    logo: "https://pharmaphorum.com/wp-content/uploads/2016/06/JJ-logo.jpg"
+                  },
+                  { 
+                    name: "I'Decor",
+                    logo: "https://img.yfisher.com/m6153/1730345878jrdu.png"
+                  }
+                ].map((company, i) => (
+                  <motion.div
+                    key={`second-${i}`}
+                    className="flex-shrink-0 w-56 h-24 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 px-4"
+                    whileHover={{ scale: 1.15 }}
+                  >
+                    <img 
+                      src={company.logo}
+                      alt={company.name}
+                      className="max-h-16 max-w-full w-auto object-contain"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = `<div class="text-2xl font-bold text-gray-700">${company.name}</div>`;
+                      }}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-green-700 to-blue-500 bg-clip-text text-transparent"
+            className="text-4xl md:text-6xl font-bold text-center mb-6 text-gray-800"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -603,58 +566,53 @@ const Home = () => {
             Frequently Asked Questions
           </motion.h2>
           <motion.p
-            className="text-center text-gray-600 mb-16 text-lg"
+            className="text-center text-gray-600 text-lg mb-16"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Everything you need to know about solar energy
+            Everything you need to know about going solar
           </motion.p>
-          <div className="space-y-4">
+
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
             {[
-              {
-                q: "How much can I save with solar panels?",
-                a: "Most customers save 70-90% on their electricity bills. The exact savings depend on your energy consumption, system size, and local electricity rates."
-              },
-              {
-                q: "What is the lifespan of solar panels?",
-                a: "Our premium solar panels come with a 25+ year warranty and typically last 30-35 years with minimal maintenance."
-              },
-              {
-                q: "Do solar panels work during cloudy days?",
-                a: "Yes! Solar panels still generate electricity on cloudy days, though at reduced efficiency. Our battery storage systems ensure you have power 24/7."
-              },
-              {
-                q: "What maintenance do solar panels require?",
-                a: "Solar panels require minimal maintenance - just periodic cleaning and annual inspections. Our team provides comprehensive maintenance packages."
-              },
-              {
-                q: "How long does installation take?",
-                a: "Most residential installations are completed in 1-3 days. Commercial and industrial projects vary based on system size and complexity."
-              }
-            ].map((faq, i) => (
+              { key: 'general', label: 'General', icon: Sparkles },
+              { key: 'maintenance', label: 'Maintenance', icon: Wrench },
+              { key: 'economics', label: 'Economics', icon: DollarSign }
+            ].map((tab) => (
+              <motion.button
+                key={tab.key}
+                onClick={() => setActiveFaqTab(tab.key)}
+                className={`flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg ${
+                  activeFaqTab === tab.key
+                    ? 'bg-gradient-to-r from-blue-800 to-indigo-800 text-white scale-105'
+                    : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-green-400'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <tab.icon className="w-5 h-5" />
+                {tab.label}
+              </motion.button>
+            ))}
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-4">
+            {faqTabs[activeFaqTab].map((faq, i) => (
               <motion.div
                 key={i}
-                className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl border-2 border-green-200 shadow-md overflow-hidden"
+                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border-2 border-gray-200 shadow-md overflow-hidden hover:shadow-xl hover:border-green-400 transition-all"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ borderColor: "#22c55e", boxShadow: "0 10px 40px rgba(34,197,94,0.2)" }}
+                transition={{ delay: i * 0.08 }}
               >
                 <details className="group">
-                  <summary className="flex justify-between items-center p-6 cursor-pointer list-none">
-                    <span className="text-lg font-semibold text-green-900">{faq.q}</span>
-                    <motion.div
-                      className="text-green-600"
-                      whileHover={{ scale: 1.2, rotate: 90 }}
-                    >
-                      <svg className="w-6 h-6 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </motion.div>
+                  <summary className="flex justify-between items-start p-6 cursor-pointer list-none">
+                    <span className="text-lg font-bold text-gray-800 pr-4 leading-snug">{faq.q}</span>
+                    <ChevronDown className="w-6 h-6 text-green-600 flex-shrink-0 mt-1 group-open:rotate-180 transition-transform duration-300" />
                   </summary>
-                  <div className="px-6 pb-6 text-gray-700 leading-relaxed">
+                  <div className="px-6 pb-6 text-gray-700 leading-relaxed text-base">
                     {faq.a}
                   </div>
                 </details>
@@ -664,170 +622,99 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section with Image Background */}
-      <section className="py-20 px-6 relative overflow-hidden bg-gradient-to-b from-green-100 to-green-50">
-        {/* Background Image */}
-        <div className="absolute inset-0 opacity-10">
-          <img 
-            src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1920&auto=format&fit=crop" 
-            alt="Solar panels" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        {/* Floating Elements */}
+      {/* CTA Section */}
+      <section className="py-24 px-6 bg-gradient-to-br from-green-600 via-emerald-600 to-green-700 relative overflow-hidden">
         <motion.div
-          className="absolute top-10 left-10 w-32 h-32 bg-green-400/20 rounded-full blur-3xl"
-          animate={{
-            y: [0, 30, 0],
-            x: [0, 20, 0],
+          className="absolute top-10 left-10 w-96 h-96 bg-yellow-400/20 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.3, 1], 
+            x: [0, 50, 0],
+            opacity: [0.3, 0.6, 0.3] 
           }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-10 right-10 w-40 h-40 bg-emerald-400/20 rounded-full blur-3xl"
-          animate={{
-            y: [0, -30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 8, repeat: Infinity }}
         />
 
         <motion.div
-          className="max-w-4xl mx-auto text-center relative z-10"
+          className="max-w-5xl mx-auto text-center relative z-10"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
         >
-          <div className="bg-gradient-to-br from-green-400 via-emerald-400 to-blue-400 p-1 rounded-3xl shadow-2xl">
-            <div className="bg-white rounded-3xl p-12 md:p-16">
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", duration: 0.8 }}
-              >
-                <div className="relative inline-block mb-6">
-                  <motion.div
-                    className="absolute inset-0 bg-yellow-400/40 rounded-full blur-2xl"
-                    animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-yellow-400 to-green-500 p-1 shadow-xl">
-                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                      <Sun className="w-12 h-12 text-yellow-500" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-700 to-blue-500 bg-clip-text text-transparent">
-                Ready to Power Your Future?
-              </h2>
-              <p className="text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
-                Join thousands of satisfied customers across residential, commercial, and industrial sectors. 
-                Start your journey to energy independence today!
-              </p>
-
-              {/* Features Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-                {[
-                  { icon: DollarSign, text: "Save 70-90%" },
-                  { icon: Shield, text: "25+ Year Warranty" },
-                  { icon: Zap, text: "Quick Install" },
-                  { icon: Award, text: "Award Winning" }
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    className="flex flex-col items-center gap-2 p-4 bg-green-50 rounded-xl border-2 border-green-200"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ scale: 1.05, backgroundColor: "#d1fae5", borderColor: "#22c55e" }}
-                  >
-                    <item.icon className="w-8 h-8 text-green-600" />
-                    <span className="text-sm font-semibold text-gray-700">{item.text}</span>
-                  </motion.div>
-                ))}
+          <motion.div
+            className="inline-block mb-6"
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", duration: 1 }}
+          >
+            <div className="w-20 h-20 rounded-full bg-white p-1 shadow-2xl">
+              <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+                <Sun className="w-10 h-10 text-white" />
               </div>
-
-              <div className="flex gap-4 justify-center flex-wrap">
-                <motion.button
-                  className="group bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 px-10 rounded-full shadow-2xl text-lg flex items-center gap-2"
-                  whileHover={{ scale: 1.08, boxShadow: "0 20px 60px rgba(34,197,94,0.6)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Phone className="w-5 h-5" />
-                  Schedule Consultation
-                  <motion.div
-                    className="ml-2"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
-                <Link to="/about">
-                  <motion.button
-                    className="bg-white text-green-700 font-bold py-4 px-10 rounded-full border-2 border-green-300 shadow-xl text-lg flex items-center gap-2"
-                    whileHover={{ scale: 1.08, borderColor: "#22c55e", backgroundColor: "#f0fdf4" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Zap className="w-5 h-5" />
-                    Learn More
-                  </motion.button>
-                </Link>
-              </div>
-
-              <motion.p
-                className="mt-8 text-gray-500 text-sm"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                ⚡ Get a response within 24 hours | 🌿 100% Free consultation | 📞 No obligation
-              </motion.p>
             </div>
-          </div>
-        </motion.div>
-      </section>
+          </motion.div>
 
-      {/* Contact Info Bar */}
-      <section className="bg-gradient-to-r from-green-600 via-emerald-600 to-blue-600 py-8 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white text-center md:text-left">
+          <h2 className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight drop-shadow-lg">
+            Ready to Power Your Future?
+          </h2>
+          <p className="text-xl md:text-2xl text-green-100 mb-12 leading-relaxed max-w-3xl mx-auto">
+            Join 25,000+ satisfied customers. Start your journey to energy independence and save up to 90% on electricity bills today!
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             {[
-              { icon: Phone, title: "Call Us", content: "+1 (800) MAVEN-GO" },
-              { icon: Mail, title: "Email Us", content: "info@mavengreen.com" },
-              { icon: MapPin, title: "Visit Us", content: "123 Green Street, Solar City" }
-            ].map((contact, i) => (
+              { icon: DollarSign, text: "Save 70-90%" },
+              { icon: Shield, text: "25+ Year Warranty" },
+              { icon: Zap, text: "Quick Install" },
+              { icon: Leaf, text: "Eco-Friendly" }
+            ].map((item, i) => (
               <motion.div
                 key={i}
-                className="flex flex-col md:flex-row items-center gap-4"
+                className="flex flex-col items-center gap-2 p-5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
               >
-                <motion.div
-                  className="p-3 bg-white/20 rounded-full"
-                  whileHover={{ rotate: 360, backgroundColor: "rgba(255,255,255,0.3)" }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <contact.icon className="w-6 h-6" />
-                </motion.div>
-                <div>
-                  <h4 className="font-semibold text-lg">{contact.title}</h4>
-                  <p className="text-green-100">{contact.content}</p>
-                </div>
+                <item.icon className="w-8 h-8 text-yellow-300" />
+                <span className="text-sm font-bold text-white">{item.text}</span>
               </motion.div>
             ))}
           </div>
-        </div>
+
+          <div className="flex gap-5 justify-center flex-wrap">
+            <motion.button
+              className="group bg-white text-green-700 font-bold py-5 px-12 rounded-full shadow-2xl text-xl flex items-center gap-3"
+              whileHover={{ scale: 1.08, boxShadow: "0 25px 70px rgba(255,255,255,0.5)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Phone className="w-6 h-6" />
+              Schedule Free Consultation
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+            <motion.button
+              className="bg-transparent border-3 border-white text-white font-bold py-5 px-12 rounded-full text-xl flex items-center gap-3 backdrop-blur-sm"
+              whileHover={{ scale: 1.08, backgroundColor: "rgba(255,255,255,0.15)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Learn More
+              <ArrowRight className="w-5 h-5" />
+            </motion.button>
+          </div>
+
+          <motion.p
+            className="mt-10 text-green-100 text-base flex items-center justify-center gap-6 flex-wrap"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <span className="flex items-center gap-2">⚡ Response within 24 hours</span>
+            <span className="flex items-center gap-2">🌿 Free consultation</span>
+            <span className="flex items-center gap-2">📞 No obligation</span>
+          </motion.p>
+        </motion.div>
       </section>
 
     </div>
